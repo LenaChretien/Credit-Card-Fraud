@@ -40,9 +40,11 @@ pre_app_filter = pre_app.drop(pre_app.index[comb_outliers],axis = 0)
 
 
 
-bins = [0,35000,55000,100000,350000,1000000000]
-slot = ['Low income','lower-middle class','middle class','upper-middle class','upper class']
 
+bins = [0,50000,100000,150000,200000,300000,500000,1000000,100000000000]
+slot = ['<50000', '50000-100000','100000-150000','150000-200000',\
+        '200000-300000', '300000-500000', '500000-1000000',\
+        '>1000000']
 pre_app_filter['application_range'] = pd.cut(pre_app_filter['AMT_APPLICATION'],bins,labels = slot)
 
 pre_app_filter['credit_range']=pd.cut(pre_app_filter['AMT_CREDIT'],bins,labels=slot)

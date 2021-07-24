@@ -75,9 +75,15 @@ app_filter = app.drop(app.index[comb_outliers],axis = 0)
 #app_filter['AMT_GOODS_RANGE'] = pd.cut(app_filter['AMT_GOODS_PRICE'],bins,labels = slot)
 bins = [0,35000,55000,100000,350000,1000000000]
 slot = ['Low income','lower-middle class','middle class','upper-middle class','upper class']
-app_filter['AMT_CREDIT_RANGE'] = pd.cut(app_filter['AMT_CREDIT'],bins,labels = slot)
-
 app_filter['AMT_INCOME_RANGE']=pd.cut(app_filter['AMT_INCOME_TOTAL'],bins,labels=slot)
+
+
+
+bins = [0,50000,100000,150000,200000,300000,500000,1000000,100000000000]
+slot = ['<50000', '50000-100000','100000-150000','150000-200000',\
+        '200000-300000', '300000-500000', '500000-1000000',\
+        '>1000000']
+app_filter['AMT_CREDIT_RANGE'] = pd.cut(app_filter['AMT_CREDIT'],bins,labels = slot)
 app_filter['AMT_GOODS_RANGE'] = pd.cut(app_filter['AMT_GOODS_PRICE'],bins,labels = slot)
 
 
