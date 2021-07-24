@@ -67,18 +67,29 @@ comb_outliers = np.unique(np.concatenate((outliers_income[0], outliers_credit[0]
 app_filter = app.drop(app.index[comb_outliers],axis = 0)
 
 
-bins = [0,30000,50000,70000,90000,110000,150000,200000,300000,10000000]
-slot = ['<30000', '30000-50000','50000-70000','70000-90000', '90000-110000', '110000-150000', '150000-200000', '200000-300000', '>300000']
+#bins = [0,30000,50000,70000,90000,110000,150000,200000,300000,10000000]
+#slot = ['<30000', '30000-50000','50000-70000','70000-90000', '90000-110000', '110000-150000', '150000-200000', '200000-300000', '>300000']
 
+#app_filter['AMT_CREDIT_RANGE'] = pd.cut(app_filter['AMT_CREDIT'],bins,labels = slot)
+#app_filter['AMT_INCOME_RANGE']=pd.cut(app_filter['AMT_INCOME_TOTAL'],bins,labels=slot)
+#app_filter['AMT_GOODS_RANGE'] = pd.cut(app_filter['AMT_GOODS_PRICE'],bins,labels = slot)
+bins = [0,35000,55000,100000,350000,1000000000]
+slot = ['Low income','lower-middle class','middle class','upper-middle class','upper class']
 app_filter['AMT_CREDIT_RANGE'] = pd.cut(app_filter['AMT_CREDIT'],bins,labels = slot)
+
 app_filter['AMT_INCOME_RANGE']=pd.cut(app_filter['AMT_INCOME_TOTAL'],bins,labels=slot)
 app_filter['AMT_GOODS_RANGE'] = pd.cut(app_filter['AMT_GOODS_PRICE'],bins,labels = slot)
 
 
-bins = [20,25,30,35,40,45,50,55,60,65,70]
 
-slot = ['<25', '25-30','30-35','35-40', '40-45', '45-50', '50-55', '55-60', '60-65','>65']
+#bins = [20,25,30,35,40,45,50,55,60,65,70]
+#slot = ['<25', '25-30','30-35','35-40', '40-45', '45-50', '50-55', '55-60', '60-65','>65']
 
+#app_filter['age_range'] = pd.cut(app_filter['age'],bins,labels = slot)
+#app_filter['employment_range'] = pd.cut(app_filter['employed'],bins,labels = slot)
+#app_filter['id_pub_range'] = pd.cut(app_filter['id_pub'],bins,labels = slot)
+bins = [0,30,45,60,100]
+slot = ['<30','30-45','45-60','>60']
 app_filter['age_range'] = pd.cut(app_filter['age'],bins,labels = slot)
 app_filter['employment_range'] = pd.cut(app_filter['employed'],bins,labels = slot)
 app_filter['id_pub_range'] = pd.cut(app_filter['id_pub'],bins,labels = slot)
@@ -96,7 +107,7 @@ target0 = app_filter[app_filter['target'] == 0]
 
 
 app_filter.to_csv('app_clean.csv')
-men.to_csv('men_app.csv')
-women.to_csv('women_app.csv')
-target1.to_csv('target1_app.csv')
-target0.to_csv('target0_app.csv')
+#men.to_csv('men_app.csv')
+#women.to_csv('women_app.csv')
+#target1.to_csv('target1_app.csv')
+#target0.to_csv('target0_app.csv')

@@ -40,13 +40,8 @@ pre_app_filter = pre_app.drop(pre_app.index[comb_outliers],axis = 0)
 
 
 
-
-
-bins = [0,30000,50000,70000,90000,110000,150000,200000,300000,10000000]
-
-slot = ['<30000', '30000-50000','50000-70000','70000-90000',\
-        '90000-110000', '110000-150000', '150000-200000',\
-        '200000-300000', '>300000']
+bins = [0,35000,55000,100000,350000,1000000000]
+slot = ['Low income','lower-middle class','middle class','upper-middle class','upper class']
 
 pre_app_filter['application_range'] = pd.cut(pre_app_filter['AMT_APPLICATION'],bins,labels = slot)
 
@@ -56,9 +51,9 @@ pre_app_filter['goods_range'] = pd.cut(pre_app_filter['AMT_GOODS_PRICE'],bins,la
 
 
 
-col ={'SK_ID_PREV':'id_pre', 'SK_ID_CURR':'id_curr', 'NAME_CONTRACT_TYPE':'credit_type',\
+col ={'SK_ID_PREV':'id_pre', 'SK_ID_CURR':'id_curr', 'NAME_CONTRACT_TYPE':'pre_credit_type',\
       'AMT_ANNUITY': 'pre_annuity', \
-      'WEEKDAY_APPR_PROCESS_START':'weekday', 'HOUR_APPR_PROCESS_START':'hour',\
+      'WEEKDAY_APPR_PROCESS_START':'pre_weekday', 'HOUR_APPR_PROCESS_START':'pre_hour',\
       'FLAG_LAST_APPL_PER_CONTRACT':'last_per_contract', 'NFLAG_LAST_APPL_IN_DAY':'last_per_day',\
       'RATE_INTEREST_PRIMARY':'interest', 'NAME_CASH_LOAN_PURPOSE':'cash_purpose',\
       'NAME_CONTRACT_STATUS':'status', 'DAYS_DECISION':'time_decision', 'NAME_PAYMENT_TYPE':'payment_name',\
